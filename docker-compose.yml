@@ -1,0 +1,60 @@
+version: '3.7'
+services:
+    db:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        expose:
+          - "3306"
+
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
+
+        volumes:
+            - my-db:/var/lib/mysql
+
+        networks:
+            - dev
+
+    php:
+        build: ./docker/php-fpm
+
+        volumes:
+            - ./symfony:/var/www/symfony:cached
+            - ./logs/symfony:/var/www/symfony/var/log:cached
+        links:
+            - db
+
+        networks:
+            - dev
+
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - "8000:8000"
+        links:
+            - php
+        volumes:
+            - ./logs/nginx:/var/log/nginx:cached
+            - ./symfony:/var/www/symfony:cached
+        networks:
+            - dev
+
+    goe2e:
+        build: ./docker/e2e_tests
+        tty: true
+        networks:
+            - dev
+        volumes:
+          - ./e2e:/root/go/src/e2e_tests:cached
+
+        working_dir: /root/go/src
+
+volumes:
+    my-db:
+
+networks:
+    dev:

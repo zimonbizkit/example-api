@@ -1,0 +1,42 @@
+2019/02/09 14:35:30 [error] 11#11: *1 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 172.27.0.1, server: symfony.localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.27.0.4:9001", host: "banks.api.tech:8000"
+2019/02/21 21:26:43 [crit] 8#8: *24 open() "/var/tmp/nginx/fastcgi/1/00/0000000001" failed (13: Permission denied) while reading upstream, client: 172.25.0.1, server: symfony.localhost, request: "GET /api/doc HTTP/1.1", upstream: "fastcgi://172.25.0.3:9001", host: "banks.api.tech:8000"
+2019/02/23 18:03:00 [error] 9#9: *258 FastCGI sent in stderr: "PHP message: PHP Fatal error:  A void function must not return a value in /var/www/symfony/techtest/src/Core/Application/Service/IssueTransactionUseCase.php on line 69
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /var/www/symfony/techtest/public/index.php:0
+PHP message: PHP   2. App\Kernel->handle() /var/www/symfony/techtest/public/index.php:25
+PHP message: PHP   3. App\Kernel->boot() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:193
+PHP message: PHP   4. App\Kernel->initializeContainer() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:133
+PHP message: PHP   5. App\Kernel->buildContainer() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:543
+PHP message: PHP   6. App\Kernel->registerContainerConfiguration() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:653
+PHP message: PHP   7. Symfony\Component\Config\Loader\DelegatingLoader->load() /var/www/symfony/techtest/vendor/symfony/framework-bundle/Kernel/MicroKernelTrait.php:83
+PHP message: PHP   8. Symfony\Component\DependencyInjection\Loader\ClosureLoader->load() /var/www/symfony/techtest/vendor/symfony/config/Loader/DelegatingLoader.php:40
+PHP message: PHP   9. App\Kernel->Symfony\Bundle\FrameworkBundle\Kernel\{closure}() /var/www/symfony/techtest/vendor/symfony/dependency-injection/Loader/ClosureLoader.php:38
+PHP message: PHP  10. App\Kernel->configureContainer() /var/www/symfony/techtest/vendor/symfony/framework-bundle/Kernel/MicroKernelTrait.php:80
+PHP message: PHP  11. Symfony\Component\Config\Loader\DelegatingLoader->load() /var/www/symfony/techtest/src/Kernel.php:36
+PHP message: PHP  12. Symfony\Component\DependencyInjection\Loader\GlobFileLoader->load() /var/www/symfony/techtest/vendor/symfony/config/Loader/DelegatingLoader.php:40
+PHP message: PHP  13. Symfony\Component\DependencyInjection\Loader\GlobFileLoader->import() /var/www/symfony/techtest/vendor/symfony/dependency-injection/Loader/GlobFileLoader.php:27
+PHP m
+2019/02/23 18:44:39 [error] 8#8: *334 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: Catchable Fatal Error: Object of class App\Core\Domain\Entity\User could not be converted to string in /var/www/symfony/techtest/src/Core/Domain/Service/IssueTransactionService.php:41
+Stack trace:
+#0 /var/www/symfony/techtest/src/Core/Application/Service/IssueTransactionUseCase.php(39): App\Core\Domain\Service\IssueTransactionService->issue(Object(App\Core\Domain\Entity\User), Object(App\Core\Domain\Entity\User), 1)
+#1 /var/www/symfony/techtest/src/Core/Infrastructure/Ui/Controllers/TransactionsController.php(33): App\Core\Application\Service\IssueTransactionUseCase->handle(Object(App\Core\Application\Service\IssueTransactionRequest))
+#2 /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php(150): App\Core\Infrastructure\Ui\Controllers\TransactionsController->post('4add6618-f3d2-4...', Object(Symfony\Component\HttpFoundation\Request))
+#3 /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php(67): Symfony\Component\HttpKernel...
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /var/www/symfony/techtest/public/index.php:0
+PHP message: PHP   2. App\Kernel->handle() /var/www/symfony/techtest/public/index.php:25
+PHP message: PHP   3. Symfony\Component\HttpKernel\HttpKernel->handle() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:198
+PHP message: PHP   4. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php:67
+PHP message: PHP   5. App\Core\Infrastructure\Ui\Controllers\TransactionsController->post() /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php:150
+PHP message: PHP   6. App\Core\Application\Service\IssueTransactionUseCase->handle() /var/www/symfony/techtest/src/Core/Infrastructure/Ui/Controllers/TransactionsController.php:33
+PHP message: PHP   7. App\Core\Domain\Service\IssueTransactionService->issue() /var/www/symfony/techtest/src/Core/Application/Service/I
+2019/02/23 18:48:02 [error] 10#10: *338 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98570240 bytes) in /var/www/symfony/techtest/src/Core/Infrastructure/Ui/Controllers/TransactionsController.php on line 39
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /var/www/symfony/techtest/public/index.php:0
+PHP message: PHP   2. App\Kernel->handle() /var/www/symfony/techtest/public/index.php:25
+PHP message: PHP   3. Symfony\Component\HttpKernel\HttpKernel->handle() /var/www/symfony/techtest/vendor/symfony/http-kernel/Kernel.php:198
+PHP message: PHP   4. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php:67
+PHP message: PHP   5. App\Core\Infrastructure\Ui\Controllers\TransactionsController->post() /var/www/symfony/techtest/vendor/symfony/http-kernel/HttpKernel.php:150
+PHP message: PHP   6. print_r() /var/www/symfony/techtest/src/Core/Infrastructure/Ui/Controllers/TransactionsController.php:39" while reading response header from upstream, client: 172.20.0.1, server: symfony.localhost, request: "POST /api/user/4add6618-f3d2-48e5-9557-409e8cb67c5f/transaction HTTP/1.1", upstream: "fastcgi://172.20.0.3:9001", host: "banks.api.tech:8000"
+2019/02/24 11:42:36 [crit] 11#11: *24 open() "/var/tmp/nginx/fastcgi/1/00/0000000001" failed (13: Permission denied) while reading upstream, client: 172.20.0.1, server: symfony.localhost, request: "GET /api/doc HTTP/1.1", upstream: "fastcgi://172.20.0.3:9001", host: "banks.api.tech:8000"
+2019/02/24 11:43:50 [crit] 10#10: *32 open() "/var/tmp/nginx/fastcgi/2/00/0000000002" failed (13: Permission denied) while reading upstream, client: 172.20.0.1, server: symfony.localhost, request: "GET /api/doc HTTP/1.1", upstream: "fastcgi://172.20.0.3:9001", host: "banks.api.tech:8000"

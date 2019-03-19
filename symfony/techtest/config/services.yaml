@@ -1,0 +1,63 @@
+services:
+  _defaults:
+      autowire: true      # Automatically injects dependencies in your services.
+      autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+      public: true       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+  App\:
+    public: true
+    resource: '../src/*'
+    exclude: '../src/{Entity,Migrations,Tests,Kernel,Request,Response.php}'
+
+  #Dependencies that don't need autowiring go below
+
+  App\Core\Application\Service\GetUserBalanceRequest:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\GetUserBalanceRequest
+
+  App\Core\Application\Service\GetUserBalanceResponse:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\GetUserBalanceResponse
+
+  App\Core\Application\Service\IssueTransactionRequest:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\IssueTransactionRequest
+
+  App\Core\Application\Service\IssueTransactionResponse:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\IssueTransactionResponse
+
+  App\Core\Domain\Entity\User:
+    public: true
+    autowire: false
+    class: App\Core\Domain\Entity\User
+
+  App\Core\Domain\Entity\Balance:
+    public: true
+    autowire: false
+    class: App\Core\Domain\Entity\Balance
+
+  App\Core\Domain\Entity\Transaction:
+    public: true
+    autowire: false
+    class: App\Core\Domain\Entity\Transaction
+
+  App\SharedKernel\Infrastructure\Schemas\TransactionSchema:
+    public: true
+    autowire: false
+    class: App\SharedKernel\Infrastructure\Schemas\TransactionSchema
+
+  App\SharedKernel\Infrastructure\Schemas\BalanceSchema:
+    public: true
+    autowire: false
+    class: App\SharedKernel\Infrastructure\Schemas\BalanceSchema
+
+  App\Kernel:
+    public: true
+    autowire: false
+    class: App\Kernel

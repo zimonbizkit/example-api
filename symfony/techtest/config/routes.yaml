@@ -1,0 +1,24 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.get_user:
+    path: /api/user/{userId}
+    methods: GET
+    defaults: { _controller: App\Core\Infrastructure\Ui\Controllers\UsersController::get }
+
+app.get_user_balance:
+    path: /api/user/{userId}/balance
+    methods: GET
+    defaults: { _controller: App\Core\Infrastructure\Ui\Controllers\BalancesController::get }
+
+app.post_user_transaction:
+    path: /api/user/{userId}/transaction
+    methods: POST
+    defaults: { _controller: App\Core\Infrastructure\Ui\Controllers\TransactionsController::post }
+
+

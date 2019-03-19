@@ -1,0 +1,41 @@
+services:
+
+  App\Core\Application\Service\GetUserBalanceRequest:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\GetUserBalanceRequest
+
+  App\Core\Application\Service\GetUserBalanceResponse:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\GetUserBalanceResponse
+
+  App\Core\Application\Service\IssueTransactionRequest:
+    public: true
+    autowire: false
+    class: App\Core\Application\Service\IssueTransactionRequest
+
+  App\Core\Application\Service\IssueTransactionResponse:
+    public:true
+    autowire: false
+    class: App\Core\Application\Service\IssueTransactionResponse
+
+  App\Core\Domain\Entity\User:
+    public: true
+    autowire: false
+    class: App\Core\Domain\Entity\User
+
+  App\Core\Domain\Entity\Balance:
+    public: true
+    autowire: false
+    class: App\Core\Domain\Entity\Balance
+
+  App\Core\Domain\Entity\Transaction:
+      public: true
+      autowire: false
+      class: App\Core\Domain\Entity\Transaction
+
+  App\Kernel:
+    public: true
+    autowire: false
+    class: App\Kernel
